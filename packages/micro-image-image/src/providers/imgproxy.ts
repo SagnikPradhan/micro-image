@@ -16,7 +16,7 @@ export function generateUrl(options: ImgProxyOptions) {
 
   // https://docs.imgproxy.net/usage/processing#processing-options
   const processingOptions = getKeys(imgProxyOptions)
-    .filter((key) => imgProxyOptions[key].length > 0)
+    .filter((key) => imgProxyOptions[key].filter((value) => value !== undefined).length > 0)
     .map((key) => [key, ...imgProxyOptions[key]].join(":"))
     .join("/");
 
